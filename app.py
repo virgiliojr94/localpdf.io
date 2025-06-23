@@ -33,7 +33,7 @@ HTML_TEMPLATE = '''
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LocalPDF.io Local</title>
+    <title>LocalPDF.io</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: Arial, sans-serif; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
@@ -68,12 +68,18 @@ HTML_TEMPLATE = '''
         .close:hover { color: #000; }
         .back-btn { background: #6c757d; color: white; padding: 10px 20px; border: none; border-radius: 25px; cursor: pointer; margin-bottom: 20px; }
         .back-btn:hover { background: #545b62; }
+        .footer { text-align: center; color: white; margin-top: 40px; padding: 20px 0; border-top: 1px solid #ddd; }
+        .footer p { margin-bottom: 10px; }
+        .footer a { color: #667eea; text-decoration: none; }
+        .footer a:hover { text-decoration: underline; }
+        .social-icons { margin-top: 10px; }
+        .social-icons a { margin: 0 10px; color: #667eea; font-size: 1.2em; }
     </style>
 </head>
 <body>
     <div class="container">
         <div class="header">
-            <h1>🌟 LocalPDF.io Local</h1>
+            <h1>🌟 LocalPDF.io</h1>
             <p>Todas as ferramentas PDF que você precisa em um só lugar</p>
         </div>
 
@@ -102,6 +108,14 @@ HTML_TEMPLATE = '''
                 <div class="tool-card" onclick="showTool('word-to-pdf')">
                     <h3>📝 Word para PDF</h3>
                     <p>Converta documentos DOCX para PDF</p>
+                </div>
+                <div class="tool-card" onclick="showTool('excel-to-pdf')">
+                    <h3>📊 Excel para PDF</h3>
+                    <p>Converta planilhas XLSX para PDF</p>
+                </div>
+                <div class="tool-card" onclick="showTool('txt-to-pdf')">
+                    <h3>📄 TXT para PDF</h3>
+                    <p>Converta arquivos de texto simples para PDF</p>
                 </div>
             </div>
         </div>
@@ -132,6 +146,18 @@ HTML_TEMPLATE = '''
                 </div>
                 
                 <div id="result" class="hidden"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Desenvolvido por Virgílio Monteiro</p>
+            <div>
+                <a href="mailto:virgilio.junior94@gmail.com">✉️ virgilio.junior94@gmail.com</a> |
+                <a href="tel:+5595981121572">📱 (95) 98112-1572</a>
+            </div>
+            <div class="social-icons">
+                <a href="https://github.com/virgiliojr94" target="_blank">🔗 GitHub</a>
+                <a href="https://www.linkedin.com/in/virgiliojunior94/" target="_blank">🔗 LinkedIn</a>
             </div>
         </div>
     </div>
@@ -175,6 +201,18 @@ HTML_TEMPLATE = '''
                 title: '📝 Word para PDF',
                 description: 'Converta documentos Word (.docx) para PDF',
                 accept: '.docx',
+                multiple: false
+            },
+            'excel-to-pdf': {
+                title: '📊 Excel para PDF',
+                description: 'Converta planilhas Excel (.xlsx) para PDF',
+                accept: '.xlsx',
+                multiple: false
+            },
+            'txt-to-pdf': {
+                title: '📄 TXT para PDF',
+                description: 'Converta arquivos de texto simples (.txt) para PDF',
+                accept: '.txt',
                 multiple: false
             }
         };
@@ -318,6 +356,100 @@ HTML_TEMPLATE = '''
 def index():
     return render_template_string(HTML_TEMPLATE)
 
+def excel_to_pdf(file, temp_dir):
+    xlsx_path = os.path.join(temp_dir, secure_filename(file.filename))
+    file.save(xlsx_path)
+
+    pdf_path = os.path.join(temp_dir, 'excel_to_pdf.pdf')
+    c = canvas.Canvas(pdf_path, pagesize=letter)
+    width, height = letter
+    y_position = height - 50
+
+    try:
+        workbook = openpyxl.load_workbook(xlsx_path)
+        for sheet_name in workbook.sheetnames:
+            sheet = workbook[sheet_name]
+            c.setFont("Helvetica", 10)
+            c.drawString(50, y_position, f"--- Planilha: {sheet_name} ---")
+            y_position -= 20
+
+            for row_idx, row in enumerate(sheet.iter_rows()):
+                row_data = [str(cell.value) if cell.value is not None else "" for cell in row]
+                line_text = " | ".join(row_data)
+
+                # Simples quebra de linha para caber na página
+                max_line_width = int((width - 100) / 6) # Estimativa de caracteres por linha
+                if len(line_text) > max_line_width:
+                    # Implementação mais robusta de quebra de linha seria necessária
+                    line_text = line_text[:max_line_width] + "..."
+
+                if y_position < 50:
+                    c.showPage();
+                    y_position = height - 50;
+                    c.setFont("Helvetica", 10) # Reset font after new page
+
+                c.drawString(50, y_position, line_text)
+                y_position -= 15 # Espaçamento menor para linhas de planilha
+
+            y_position -= 30 # Espaçamento entre planilhas
+            if y_position < 50 and sheet_name != workbook.sheetnames[-1]: # Only show new page if not last sheet
+                 c.showPage();
+                 y_position = height - 50;
+
+    except Exception as e:
+        # Handle potential errors with Excel files
+        c.drawString(50, y_position - 20, f"Erro ao ler planilha: {e}")
+        print(f"Erro ao ler planilha Excel: {e}")
+
+    c.save()
+    return [pdf_path]
+
+def txt_to_pdf(file, temp_dir):
+    txt_path = os.path.join(temp_dir, secure_filename(file.filename))
+    file.save(txt_path)
+
+    pdf_path = os.path.join(temp_dir, 'text_to_pdf.pdf')
+    c = canvas.Canvas(pdf_path, pagesize=letter)
+    width, height = letter
+    y_position = height - 50
+
+    c.setFont("Helvetica", 12)
+
+    try:
+        with open(txt_path, 'r', encoding='utf-8') as f:
+            for line in f:
+                # Simples quebra de linha para caber na página
+                text_line = line.strip()
+                max_width_px = width - 100 # Margens de 50px de cada lado
+
+                # Estimar a largura do texto para quebrar linhas
+                # ReportLab não tem quebra automática de texto complexa por default
+                # Esta é uma estimativa MUITO simples; para algo robusto, precisaria de TextObject
+                approx_char_width_px = 7 # Média para Helvetica 12
+                chars_per_line = int(max_width_px / approx_char_width_px)
+
+                if len(text_line) > chars_per_line:
+                    # Quebra simples da linha
+                    chunks = [text_line[i:i+chars_per_line] for i in range(0, len(text_line), chars_per_line)];
+                else:
+                    chunks = [text_line]
+
+                for chunk in chunks:
+                    if y_position < 50: # Margem inferior
+                        c.showPage();
+                        y_position = height - 50;
+                        c.setFont("Helvetica", 12) # Reset font after new page
+
+                    c.drawString(50, y_position, chunk)
+                    y_position -= 15 # Espaçamento entre linhas
+
+    except Exception as e:
+        c.drawString(50, y_position - 20, f"Erro ao ler arquivo de texto: {e}")
+        print(f"Erro ao ler arquivo de texto: {e}")
+
+    c.save()
+    return [pdf_path]
+
 @app.route('/convert', methods=['POST'])
 def convert():
     if 'files' not in request.files:
@@ -344,8 +476,12 @@ def convert():
             output_files = split_pdf(files[0], temp_dir)
         elif tool == 'compress-pdf':
             output_files = compress_pdf(files[0], temp_dir)
-        elif tool == 'word-to-pdf':
+        elif tool == 'word-to-pdf': # Já existente
             output_files = word_to_pdf(files[0], temp_dir)
+        elif tool == 'excel-to-pdf': # NOVA OPÇÃO
+            output_files = excel_to_pdf(files[0], temp_dir)
+        elif tool == 'txt-to-pdf': # NOVA OPÇÃO
+            output_files = txt_to_pdf(files[0], temp_dir)
         else:
             return jsonify({'error': 'Ferramenta não suportada'}), 400
         
@@ -365,8 +501,9 @@ def convert():
         return jsonify({'error': str(e)}), 500
     
     finally:
-        # Limpar arquivos temporários (será feito automaticamente)
-        pass
+        # Limpar o diretório temporário após o uso
+        if os.path.exists(temp_dir):
+            shutil.rmtree(temp_dir)
 
 def pdf_to_images(file, temp_dir):
     pdf_path = os.path.join(temp_dir, secure_filename(file.filename))
@@ -471,30 +608,30 @@ def word_to_pdf(file, temp_dir):
             
             words = text.split()
             lines = []
-            current_line = []
+            current_line = [];
             
             for word in words:
                 if len(' '.join(current_line + [word])) <= chars_per_line:
                     current_line.append(word)
                 else:
                     if current_line:
-                        lines.append(' '.join(current_line))
-                        current_line = [word]
+                        lines.append(' '.join(current_line));
+                        current_line = [word];
                     else:
-                        lines.append(word)
+                        lines.append(word);
             
             if current_line:
-                lines.append(' '.join(current_line))
+                lines.append(' '.join(current_line));
             
             for line in lines:
                 if y_position < 50:
-                    c.showPage()
-                    y_position = height - 50
+                    c.showPage();
+                    y_position = height - 50;
                 
-                c.drawString(50, y_position, line)
-                y_position -= 20
+                c.drawString(50, y_position, line);
+                y_position -= 20;
     
-    c.save()
+    c.save();
     return [pdf_path]
 
 if __name__ == '__main__':
