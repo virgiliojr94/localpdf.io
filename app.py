@@ -107,7 +107,7 @@ HTML_TEMPLATE = '''
                 </div>
                 <div class="tool-card" onclick="showTool('word-to-pdf')">
                     <h3>📝 Word para PDF</h3>
-                    <p>Converta documentos DOCX para PDF</p>
+                    <p>Converta um ou mais documentos DOCX para PDF</p>
                 </div>
                 <div class="tool-card" onclick="showTool('excel-to-pdf')">
                     <h3>📊 Excel para PDF</h3>
@@ -199,9 +199,9 @@ HTML_TEMPLATE = '''
             },
             'word-to-pdf': {
                 title: '📝 Word para PDF',
-                description: 'Converta documentos Word (.docx) para PDF',
+                description: 'Converta documentos Word (.docx) para PDF - aceita múltiplos arquivos',
                 accept: '.docx',
-                multiple: false
+                multiple: true
             },
             'excel-to-pdf': {
                 title: '📊 Excel para PDF',
@@ -476,8 +476,8 @@ def convert():
             output_files = split_pdf(files[0], temp_dir)
         elif tool == 'compress-pdf':
             output_files = compress_pdf(files[0], temp_dir)
-        elif tool == 'word-to-pdf': # Já existente
-            output_files = word_to_pdf(files[0], temp_dir)
+        elif tool == 'word-to-pdf':
+            output_files = word_to_pdf(files, temp_dir)  # Agora aceita múltiplos arquivos
         elif tool == 'excel-to-pdf': # NOVA OPÇÃO
             output_files = excel_to_pdf(files[0], temp_dir)
         elif tool == 'txt-to-pdf': # NOVA OPÇÃO
@@ -582,56 +582,115 @@ def compress_pdf(file, temp_dir):
     
     return [output_path]
 
-def word_to_pdf(file, temp_dir):
-    docx_path = os.path.join(temp_dir, secure_filename(file.filename))
-    file.save(docx_path)
+def word_to_pdf(files, temp_dir):
+    """
+    Converte um ou múltiplos arquivos DOCX para PDF
+    Se houver múltiplos arquivos, mescla todos em um único PDF
+    """
+    from docx import Document
+    from reportlab.lib.pagesizes import letter
+    from reportlab.pdfgen import canvas
     
-    # Lê o documento Word
-    doc = Document(docx_path)
-    
-    # Cria PDF usando reportlab
+    # Criar PDF de saída
     pdf_path = os.path.join(temp_dir, 'word_to_pdf.pdf')
     c = canvas.Canvas(pdf_path, pagesize=letter)
     width, height = letter
-    
     y_position = height - 50
     
-    for paragraph in doc.paragraphs:
-        if paragraph.text.strip():
-            # Quebra texto longo em múltiplas linhas
-            text = paragraph.text
-            max_width = width - 100
-            
-            # Estimativa simples de largura de texto
-            approx_char_width = 6
-            chars_per_line = int(max_width / approx_char_width)
-            
-            words = text.split()
-            lines = []
-            current_line = [];
-            
-            for word in words:
-                if len(' '.join(current_line + [word])) <= chars_per_line:
-                    current_line.append(word)
-                else:
-                    if current_line:
-                        lines.append(' '.join(current_line));
-                        current_line = [word];
-                    else:
-                        lines.append(word);
-            
-            if current_line:
-                lines.append(' '.join(current_line));
-            
-            for line in lines:
-                if y_position < 50:
-                    c.showPage();
-                    y_position = height - 50;
-                
-                c.drawString(50, y_position, line);
-                y_position -= 20;
+    # Se for apenas um arquivo (compatibilidade)
+    if not isinstance(files, list):
+        files = [files]
     
-    c.save();
+    # Processar cada arquivo DOCX
+    for file_idx, file in enumerate(files):
+        docx_path = os.path.join(temp_dir, secure_filename(file.filename))
+        file.save(docx_path)
+        
+        # Lê o documento Word
+        doc = Document(docx_path)
+        
+        # Adicionar separador visual (exceto no primeiro documento)
+        if file_idx > 0:
+            # Quebra de página
+            c.showPage()
+            y_position = height - 50
+            
+            # Adicionar cabeçalho com nome do arquivo
+            c.setFont("Helvetica-Bold", 12)
+            c.drawString(50, y_position, f"{'='*60}")
+            y_position -= 20
+            c.drawString(50, y_position, f"Documento: {file.filename}")
+            y_position -= 20
+            c.drawString(50, y_position, f"{'='*60}")
+            y_position -= 30
+            c.setFont("Helvetica", 11)
+        
+        # Processar parágrafos
+        for paragraph in doc.paragraphs:
+            if paragraph.text.strip():
+                # Quebra texto longo em múltiplas linhas
+                text = paragraph.text
+                max_width = width - 100
+                
+                # Estimativa simples de largura de texto
+                approx_char_width = 6
+                chars_per_line = int(max_width / approx_char_width)
+                
+                words = text.split()
+                lines = []
+                current_line = []
+                
+                for word in words:
+                    if len(' '.join(current_line + [word])) <= chars_per_line:
+                        current_line.append(word)
+                    else:
+                        if current_line:
+                            lines.append(' '.join(current_line))
+                            current_line = [word]
+                        else:
+                            lines.append(word)
+                
+                if current_line:
+                    lines.append(' '.join(current_line))
+                
+                for line in lines:
+                    if y_position < 50:
+                        c.showPage()
+                        y_position = height - 50
+                    
+                    c.drawString(50, y_position, line)
+                    y_position -= 20
+        
+        # Processar tabelas (se houver)
+        for table in doc.tables:
+            # Adicionar espaçamento antes da tabela
+            y_position -= 10
+            
+            if y_position < 100:
+                c.showPage()
+                y_position = height - 50
+            
+            # Desenhar linhas da tabela
+            c.setFont("Helvetica", 9)
+            for row in table.rows:
+                row_text = ' | '.join([cell.text for cell in row.cells])
+                
+                # Quebrar texto da linha se necessário
+                if len(row_text) > 100:
+                    row_text = row_text[:97] + '...'
+                
+                if y_position < 50:
+                    c.showPage()
+                    y_position = height - 50
+                
+                c.drawString(50, y_position, row_text)
+                y_position -= 15
+            
+            # Espaçamento após tabela
+            y_position -= 10
+            c.setFont("Helvetica", 11)
+    
+    c.save()
     return [pdf_path]
 
 if __name__ == '__main__':

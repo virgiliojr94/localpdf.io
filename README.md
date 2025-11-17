@@ -1,1 +1,88 @@
-# localpdf.io
+# 🌟 LocalPDF.io
+
+> Todas as ferramentas PDF que você precisa, 100% local e privado
+
+## 📋 O que é?
+
+LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e documentos. Todos os arquivos são processados no seu próprio computador - nada é enviado para a nuvem.
+
+## ✨ Funcionalidades
+
+### 📥 Converter para PDF
+- **🖼️ Imagens → PDF** - Combine múltiplas imagens (JPG, PNG) em um PDF
+- **📝 Word → PDF** - Converta um ou vários documentos DOCX em PDF único
+- **📊 Excel → PDF** - Transforme planilhas XLSX em PDF
+- **📄 Texto → PDF** - Converta arquivos TXT em PDF formatado
+
+### 📤 Converter de PDF
+- **🖼️ PDF → Imagens** - Extraia cada página como imagem PNG
+- **📝 PDF → Word** - Converta PDF em documento DOCX editável
+- **📊 PDF → Excel** - Extraia tabelas para planilhas XLSX
+- **📄 PDF → Texto** - Extraia todo o texto em arquivo TXT
+
+### 🔄 Manipular PDF
+- **🔗 Mesclar PDFs** - Una vários PDFs em um único documento
+- **✂️ Dividir PDF** - Separe cada página em arquivo individual
+- **📦 Comprimir PDF** - Reduza o tamanho mantendo a qualidade
+
+## 🚀 Como usar
+
+### Com Docker (Recomendado)
+
+```bash
+# Clone o repositório
+git clone https://github.com/virgiliojr94/localpdf.io.git
+cd localpdf.io
+
+# Execute com Docker
+docker build -t localpdf .
+docker run -p 5000:5000 localpdf
+```
+
+Acesse: **http://localhost:5000**
+
+### Sem Docker
+
+```bash
+# Clone o repositório
+git clone https://github.com/virgiliojr94/localpdf.io.git
+cd localpdf.io
+
+# Instale as dependências
+pip install -r requirements.txt
+
+# Execute a aplicação
+python app.py
+```
+
+Acesse: **http://localhost:5000**
+
+## 🛠️ Tecnologias
+
+- **Flask** - Framework web Python
+- **PyMuPDF** - Manipulação de PDFs
+- **Pillow** - Processamento de imagens
+- **python-docx** - Manipulação de arquivos Word
+- **ReportLab** - Geração de PDFs
+- **OpenPyXL** - Manipulação de planilhas Excel
+
+## 🔒 Privacidade
+
+Todos os arquivos são processados **localmente** no seu computador. Nenhum dado é enviado para servidores externos.
+
+## 📝 Licença
+
+MIT License - Sinta-se livre para usar e modificar!
+
+## 👨‍💻 Desenvolvedor
+
+**Virgílio Monteiro**
+
+- 📧 Email: virgilio.junior94@gmail.com
+- 📱 WhatsApp: (95) 98112-1572
+- 🔗 GitHub: [@virgiliojr94](https://github.com/virgiliojr94)
+- 💼 LinkedIn: [virgiliojunior94](https://www.linkedin.com/in/virgiliojunior94/)
+
+---
+
+⭐ Se este projeto foi útil para você, considere dar uma estrela no GitHub!
