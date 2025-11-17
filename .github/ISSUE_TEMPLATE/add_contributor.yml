@@ -1,0 +1,71 @@
+name: Add Contributor
+description: Reconhecer alguém que contribuiu com o projeto
+title: "👏 Adicionar @username como contribuidor"
+labels: ["documentation"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Use este template para adicionar alguém como contribuidor ao projeto.
+        
+        **Ou simplesmente comente:** `@all-contributors please add @username for [tipo]`
+
+  - type: input
+    id: username
+    attributes:
+      label: GitHub Username
+      description: Nome de usuário do GitHub (sem @)
+      placeholder: "joaosilva"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: contribution-type
+    attributes:
+      label: Tipo de Contribuição
+      description: O que essa pessoa contribuiu?
+      multiple: true
+      options:
+        - code - Código
+        - doc - Documentação
+        - design - Design
+        - bug - Reportou bugs
+        - ideas - Ideias/Sugestões
+        - review - Revisou código
+        - test - Testes
+        - infra - Infraestrutura
+        - maintenance - Manutenção
+        - translation - Tradução
+        - question - Respondeu questões
+        - tutorial - Criou tutoriais
+        - video - Criou vídeos
+        - talk - Deu palestras
+        - blog - Escreveu posts
+        - financial - Apoio financeiro
+        - security - Segurança
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Detalhes da Contribuição
+      description: Descreva brevemente como essa pessoa contribuiu
+      placeholder: "Criou a funcionalidade X no PR #123"
+    validations:
+      required: false
+
+  - type: markdown
+    attributes:
+      value: |
+        ---
+        
+        ### Como adicionar:
+        
+        Após criar esta issue, comente:
+        
+        ```
+        @all-contributors please add @username for code, doc
+        ```
+        
+        O bot vai criar um PR automaticamente! 🤖

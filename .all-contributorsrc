@@ -1,0 +1,40 @@
+{
+  "projectName": "localpdf.io",
+  "projectOwner": "virgiliojr94",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "commitConvention": "angular",
+  "badgeTemplate": "[![All Contributors](https://img.shields.io/github/all-contributors/<%= options.projectOwner %>/<%= options.projectName %>?color=ee8449&style=flat-square)](#contribuidores)",
+  "contributorTemplate": "<%= avatarBlock %><br /><%= contributions %>",
+  "types": {
+    "custom": {
+      "symbol": "🔭",
+      "description": "Pesquisa",
+      "link": "[<%= symbol %>](<%= url %> \"<%= description %>\"),"
+    }
+  },
+  "contributors": [
+    {
+      "login": "virgiliojr94",
+      "name": "Virgílio Monteiro",
+      "avatar_url": "https://github.com/virgiliojr94.png",
+      "profile": "https://github.com/virgiliojr94",
+      "contributions": [
+        "code",
+        "doc",
+        "design",
+        "infra",
+        "maintenance"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "linkToUsage": false,
+  "skipCi": true,
+  "contributorsSortAlphabetically": false
+}

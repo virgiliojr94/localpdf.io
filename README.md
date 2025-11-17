@@ -7,6 +7,7 @@
 [![Flask](https://img.shields.io/badge/Flask-2.3.3-green.svg)](https://flask.palletsprojects.com/)
 [![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![All Contributors](https://img.shields.io/github/all-contributors/virgiliojr94/localpdf.io?color=ee8449&style=flat-square)](#-contribuidores)
 
 > Todas as ferramentas PDF que você precisa, 100% local e privado
 
@@ -86,6 +87,32 @@ Acesse: **http://localhost:5000**
 ## 🔒 Privacidade
 
 Todos os arquivos são processados **localmente** no seu computador. Nenhum dado é enviado para servidores externos.
+
+## 🤝 Contribuindo
+
+Contribuições são muito bem-vindas! Veja o [guia de contribuição](CONTRIBUTING.md) para começar.
+
+## 👥 Contribuidores
+
+Obrigado a todas essas pessoas incríveis que contribuíram para este projeto! ✨
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tbody>
+    <tr>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/virgiliojr94"><img src="https://avatars.githubusercontent.com/u/virgiliojr94?v=4?s=100" width="100px;" alt="Virgílio Monteiro"/><br /><sub><b>Virgílio Monteiro</b></sub></a><br /><a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Code">💻</a> <a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Documentation">📖</a> <a href="#design-virgiliojr94" title="Design">🎨</a> <a href="#infra-virgiliojr94" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-virgiliojr94" title="Maintenance">🚧</a></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- markdownlint-restore -->
+<!-- prettier-ignore-end -->
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+Este projeto segue a especificação [all-contributors](https://allcontributors.org). Contribuições de qualquer tipo são bem-vindas!
 
 ## 📝 Licença
 

@@ -76,6 +76,29 @@ Ideias de novas funcionalidades:
 - Teste suas mudanças antes de enviar
 - Mantenha a simplicidade
 
+## 🎖️ Reconhecimento de Contribuidores
+
+Usamos o [All Contributors Bot](https://allcontributors.org/) para reconhecer todas as contribuições!
+
+### Como ser adicionado como contribuidor:
+
+Após sua contribuição ser aceita, você ou um mantenedor pode comentar:
+
+```
+@all-contributors please add @seu-username for code
+```
+
+**Tipos de contribuição reconhecidos:**
+- `code` - Código
+- `doc` - Documentação
+- `design` - Design
+- `bug` - Reportar bugs
+- `ideas` - Ideias
+- `review` - Revisar PRs
+- E muitos mais! (veja [docs/BOT_USAGE.md](docs/BOT_USAGE.md))
+
+O bot criará automaticamente um PR adicionando você à lista de contribuidores! ✨
+
 ## Dúvidas?
 
 Entre em contato:
