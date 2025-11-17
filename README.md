@@ -1,6 +1,23 @@
+<div align="center">
+
 # 🌟 LocalPDF.io
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.11+-blue.svg)](https://www.python.org/)
+[![Flask](https://img.shields.io/badge/Flask-2.3.3-green.svg)](https://flask.palletsprojects.com/)
+[![Docker](https://img.shields.io/badge/Docker-Ready-blue.svg)](https://www.docker.com/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
+
 > Todas as ferramentas PDF que você precisa, 100% local e privado
+
+[Funcionalidades](#-funcionalidades) •
+[Como Usar](#-como-usar) •
+[Contribuir](CONTRIBUTING.md) •
+[Licença](#-licença)
+
+</div>
+
+---
 
 ## 📋 O que é?
 

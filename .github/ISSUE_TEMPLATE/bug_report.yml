@@ -1,0 +1,59 @@
+name: Bug Report
+description: Reporte um bug ou problema
+title: "[BUG]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Obrigado por reportar um bug! Por favor, preencha as informações abaixo.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Descrição do Bug
+      description: Descreva o problema claramente
+      placeholder: O que aconteceu?
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Comportamento Esperado
+      description: O que você esperava que acontecesse?
+    validations:
+      required: true
+
+  - type: textarea
+    id: steps
+    attributes:
+      label: Passos para Reproduzir
+      description: Como reproduzir o problema?
+      placeholder: |
+        1. Vá para '...'
+        2. Clique em '...'
+        3. Veja o erro
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Ambiente
+      description: Informações sobre seu ambiente
+      placeholder: |
+        - SO: [ex: Windows 10, Ubuntu 22.04]
+        - Navegador: [ex: Chrome 120, Firefox 115]
+        - Versão do Python: [ex: 3.11]
+        - Docker: [Sim/Não]
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs / Screenshots
+      description: Adicione logs de erro ou screenshots se possível
+    validations:
+      required: false

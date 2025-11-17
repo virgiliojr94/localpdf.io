@@ -1,0 +1,87 @@
+# Contribuindo para o LocalPDF.io
+
+Obrigado por considerar contribuir! 🎉
+
+## Como Contribuir
+
+### 1. Fork o Projeto
+- Faça um fork do repositório
+- Clone o fork para sua máquina
+
+### 2. Crie uma Branch
+```bash
+git checkout -b feature/minha-contribuicao
+```
+
+### 3. Faça suas Alterações
+- Escreva código limpo e comentado
+- Teste suas mudanças localmente
+- Certifique-se de que tudo funciona
+
+### 4. Commit suas Mudanças
+```bash
+git add .
+git commit -m "Adiciona: descrição da sua contribuição"
+```
+
+Use mensagens de commit descritivas:
+- `Adiciona: nova funcionalidade X`
+- `Corrige: bug na conversão Y`
+- `Melhora: performance da função Z`
+- `Documenta: atualiza README`
+
+### 5. Push para o GitHub
+```bash
+git push origin feature/minha-contribuicao
+```
+
+### 6. Abra um Pull Request
+- Vá até o repositório original
+- Clique em "New Pull Request"
+- Descreva suas mudanças claramente
+
+## O que Contribuir?
+
+### 🐛 Bugs
+Encontrou um bug? Abra uma issue descrevendo:
+- O que você esperava que acontecesse
+- O que aconteceu
+- Passos para reproduzir
+- Prints/logs se possível
+
+### ✨ Novas Funcionalidades
+Ideias de novas funcionalidades:
+- Novos formatos de conversão
+- Melhorias na interface
+- Otimizações de performance
+- Testes automatizados
+- Internacionalização (i18n)
+
+### 📚 Documentação
+- Melhorar o README
+- Adicionar exemplos de uso
+- Corrigir typos
+- Traduzir documentação
+
+### 🎨 Design
+- Melhorar a interface
+- Adicionar tema escuro
+- Tornar responsivo
+- Melhorar UX
+
+## Diretrizes de Código
+
+- Mantenha o código Python seguindo PEP 8
+- Comente código complexo
+- Teste suas mudanças antes de enviar
+- Mantenha a simplicidade
+
+## Dúvidas?
+
+Entre em contato:
+- Email: virgilio.junior94@gmail.com
+- Abra uma issue no GitHub
+
+---
+
+**Toda contribuição é bem-vinda, não importa o tamanho!** ⭐
