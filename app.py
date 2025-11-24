@@ -460,11 +460,15 @@ def convert():
     
     if not files or files[0].filename == '':
         return jsonify({'error': 'Nenhum arquivo selecionado'}), 400
+
+    # Validação de extensão dos arquivos enviados
+    for f in files:
+        if not allowed_file(f.filename):
+            return jsonify({'error': f'Extensão não permitida: {f.filename}'}), 400
     
     # Criar diretório temporário
     temp_dir = tempfile.mkdtemp()
-    output_files = []
-    
+    response = None
     try:
         if tool == 'pdf-to-images':
             output_files = pdf_to_images(files[0], temp_dir)
@@ -477,31 +481,20 @@ def convert():
         elif tool == 'compress-pdf':
             output_files = compress_pdf(files[0], temp_dir)
         elif tool == 'word-to-pdf':
-            output_files = word_to_pdf(files, temp_dir)  # Agora aceita múltiplos arquivos
-        elif tool == 'excel-to-pdf': # NOVA OPÇÃO
+            output_files = word_to_pdf(files, temp_dir)
+        elif tool == 'excel-to-pdf':
             output_files = excel_to_pdf(files[0], temp_dir)
-        elif tool == 'txt-to-pdf': # NOVA OPÇÃO
+        elif tool == 'txt-to-pdf':
             output_files = txt_to_pdf(files[0], temp_dir)
         else:
             return jsonify({'error': 'Ferramenta não suportada'}), 400
-        
-        # Se apenas um arquivo, retornar diretamente
-        if len(output_files) == 1:
-            return send_file(output_files[0], as_attachment=True)
-        
-        # Se múltiplos arquivos, criar ZIP
-        zip_path = os.path.join(temp_dir, 'converted_files.zip')
-        with zipfile.ZipFile(zip_path, 'w') as zipf:
-            for file_path in output_files:
-                zipf.write(file_path, os.path.basename(file_path))
-        
-        return send_file(zip_path, as_attachment=True, download_name='converted_files.zip')
-    
+
+        response = build_response(output_files, temp_dir)
+        return response
     except Exception as e:
         return jsonify({'error': str(e)}), 500
-    
     finally:
-        # Limpar o diretório temporário após o uso
+        # Diretório temporário limpo após preparar resposta (BytesIO) evitando remoção antecipada
         if os.path.exists(temp_dir):
             shutil.rmtree(temp_dir)
 
@@ -693,5 +686,22 @@ def word_to_pdf(files, temp_dir):
     c.save()
     return [pdf_path]
 
+def build_response(output_files, temp_dir):
+    """Monta resposta enviando arquivos como attachment sem risco de remoção prematura do diretório temporário."""
+    if len(output_files) == 1:
+        file_path = output_files[0]
+        filename = os.path.basename(file_path)
+        with open(file_path, 'rb') as f:
+            data = f.read()
+        return send_file(io.BytesIO(data), as_attachment=True, download_name=filename)
+    else:
+        zip_path = os.path.join(temp_dir, 'converted_files.zip')
+        with zipfile.ZipFile(zip_path, 'w') as zipf:
+            for file_path in output_files:
+                zipf.write(file_path, os.path.basename(file_path))
+        with open(zip_path, 'rb') as f:
+            data = f.read()
+        return send_file(io.BytesIO(data), as_attachment=True, download_name='converted_files.zip')
+
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    app.run(host='0.0.0.0', port=5000)
