@@ -21,7 +21,7 @@
         <div class="container">
             <div class="nav-content">
                 <a href="#" class="logo">
-                    <span class="logo-icon">🌟</span>
+                    <img src="assets/logo.png" data-fallback="assets/logo.svg" alt="LocalPDF.io" class="logo-img" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback; this.removeAttribute('data-fallback');}">
                     <span class="logo-text">LocalPDF.io</span>
                 </a>
                 <div class="nav-links">
@@ -83,35 +83,13 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="terminal-window">
-                    <div class="terminal-header">
-                        <div class="terminal-buttons">
-                            <span class="btn-close"></span>
-                            <span class="btn-minimize"></span>
-                            <span class="btn-maximize"></span>
+                <div class="terminal-window logo-card">
+                    <div class="terminal-body logo-body">
+                        <img src="assets/logo.png" data-fallback="assets/logo.svg" alt="Logo LocalPDF.io" class="hero-logo" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback; this.removeAttribute('data-fallback');}">
+                        <div class="logo-caption">
+                            <span class="caption-dot">•</span>
+                            127.0.0.1 vibes: tudo processado 100% local
                         </div>
-                        <div class="terminal-title">terminal</div>
-                    </div>
-                    <div class="terminal-body">
-                        <div class="terminal-line">
-                            <span class="prompt">$</span>
-                            <span class="command">git clone https://github.com/virgiliojr94/localpdf.io.git</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="prompt">$</span>
-                            <span class="command">cd localpdf.io && pip install -r requirements.txt</span>
-                        </div>
-                        <div class="terminal-line">
-                            <span class="prompt">$</span>
-                            <span class="command">python app.py</span>
-                        </div>
-                        <div class="terminal-line output">
-                            <span class="success">✓</span> LocalPDF.io rodando em http://localhost:5000
-                        </div>
-                        <div class="terminal-line output">
-                            <span class="info">→</span> Pronto para processar seus PDFs localmente
-                        </div>
-                        <div class="terminal-cursor"></div>
                     </div>
                 </div>
             </div>

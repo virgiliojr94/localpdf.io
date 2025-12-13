@@ -1,0 +1,34 @@
+<svg width="640" height="260" viewBox="0 0 640 260" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="glow" x1="40%" y1="0%" x2="90%" y2="0%">
+      <stop offset="0%" stop-color="#00c8ff"/>
+      <stop offset="100%" stop-color="#00e676"/>
+    </linearGradient>
+    <filter id="text-glow" x="-20%" y="-40%" width="140%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <rect width="640" height="260" rx="22" fill="#0a0b0f"/>
+  <g transform="translate(34 50)">
+    <rect x="0" y="0" width="122" height="70" rx="10" fill="#0f172a" stroke="#1f2937" stroke-width="6"/>
+    <rect x="0" y="75" width="122" height="70" rx="10" fill="#0f172a" stroke="#1f2937" stroke-width="6"/>
+    <rect x="20" y="20" width="14" height="14" rx="7" fill="#0a0b0f" stroke="#00e676" stroke-width="6"/>
+    <rect x="20" y="95" width="14" height="14" rx="7" fill="#0a0b0f" stroke="#00e676" stroke-width="6"/>
+    <rect x="20" y="47" width="14" height="14" rx="7" fill="#0a0b0f" stroke="#00e676" stroke-width="6"/>
+    <rect x="20" y="122" width="14" height="14" rx="7" fill="#0a0b0f" stroke="#00e676" stroke-width="6"/>
+    <rect x="45" y="20" width="64" height="8" rx="4" fill="#1f2937"/>
+    <rect x="45" y="47" width="64" height="8" rx="4" fill="#1f2937"/>
+    <rect x="45" y="95" width="64" height="8" rx="4" fill="#1f2937"/>
+    <rect x="45" y="122" width="64" height="8" rx="4" fill="#1f2937"/>
+    <rect x="16" y="150" width="90" height="16" rx="8" fill="#1f2937" stroke="#0f172a" stroke-width="4"/>
+    <rect x="2" y="166" width="118" height="8" rx="4" fill="#0a0b0f"/>
+  </g>
+  <text x="200" y="120" fill="url(#glow)" font-family="'Inter', 'SF Pro Display', 'Segoe UI', sans-serif" font-weight="800" font-size="96" letter-spacing="2" filter="url(#text-glow)">127.0.0.1</text>
+  <text x="34" y="232" fill="#00c8ff" font-family="'Inter', 'SF Pro Display', 'Segoe UI', sans-serif" font-weight="700" font-size="72">Local</text>
+  <text x="230" y="232" fill="#e5e7eb" font-family="'Inter', 'SF Pro Display', 'Segoe UI', sans-serif" font-weight="700" font-size="72">PDF.io</text>
+</svg>
