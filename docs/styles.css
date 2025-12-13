@@ -59,20 +59,24 @@ body {
     align-items: center;
     gap: 12px;
     text-decoration: none;
-    font-size: 24px;
-    font-weight: 700;
-    color: #0b1020;
     transition: opacity 0.3s;
 }
 
 .logo-img {
-    height: 36px;
+    height: 48px;
     width: auto;
-    filter: drop-shadow(0 4px 12px rgba(0, 200, 255, 0.35));
+    border-radius: 10px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    background: #ffffff;
+    padding: 4px;
 }
 
 .logo:hover {
     opacity: 0.8;
+}
+
+.logo-only {
+    margin-right: 0;
 }
 
 .logo-icon {
