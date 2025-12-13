@@ -83,13 +83,27 @@
                 </div>
             </div>
             <div class="hero-visual">
-                <div class="terminal-window logo-card">
-                    <div class="terminal-body logo-body">
-                        <img src="assets/logo.png" data-fallback="assets/logo.svg" alt="Logo LocalPDF.io" class="hero-logo" onerror="if(this.dataset.fallback){this.src=this.dataset.fallback; this.removeAttribute('data-fallback');}">
-                        <div class="logo-caption">
-                            <span class="caption-dot">•</span>
-                            127.0.0.1 vibes: tudo processado 100% local
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-buttons">
+                            <span class="btn-close"></span>
+                            <span class="btn-minimize"></span>
+                            <span class="btn-maximize"></span>
                         </div>
+                        <div class="terminal-title">terminal</div>
+                    </div>
+                    <div class="terminal-body">
+                        <div class="terminal-line">
+                            <span class="prompt">$</span>
+                            <span class="command">docker run -p 5000:5000 localpdf.io/latest</span>
+                        </div>
+                        <div class="terminal-line output">
+                            <span class="success">✓</span> LocalPDF.io rodando em http://localhost:5000
+                        </div>
+                        <div class="terminal-line output">
+                            <span class="info">→</span> Pronto para processar seus PDFs localmente
+                        </div>
+                        <div class="terminal-cursor"></div>
                     </div>
                 </div>
             </div>

@@ -41,10 +41,11 @@ body {
     position: sticky;
     top: 0;
     z-index: 1000;
-    background: rgba(15, 23, 42, 0.95);
+    background: #ffffff;
     backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--border);
+    border-bottom: 1px solid #e5e7eb;
     padding: 16px 0;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
 }
 
 .nav-content {
@@ -60,7 +61,7 @@ body {
     text-decoration: none;
     font-size: 24px;
     font-weight: 700;
-    color: var(--text);
+    color: #0b1020;
     transition: opacity 0.3s;
 }
 
@@ -85,7 +86,7 @@ body {
 }
 
 .nav-links a {
-    color: var(--text-muted);
+    color: #1f2937;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s;
@@ -93,7 +94,7 @@ body {
 }
 
 .nav-links a:hover {
-    color: var(--text);
+    color: var(--primary);
 }
 
 .btn-github {
