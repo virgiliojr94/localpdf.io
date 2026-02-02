@@ -107,7 +107,7 @@ Obrigado a todas essas pessoas incríveis que contribuíram para este projeto! �
 <table>
   <tbody>
     <tr>
-      <td align="center" valign="top" width="14.28%"><a href="https://github.com/virgiliojr94"><img src="https://avatars.githubusercontent.com/u/virgiliojr94?v=4?s=100" width="100px;" alt="Virgílio Monteiro"/><br /><sub><b>Virgílio Monteiro</b></sub></a><br /><a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Code">💻</a> <a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Documentation">📖</a> <a href="#design-virgiliojr94" title="Design">🎨</a> <a href="#infra-virgiliojr94" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-virgiliojr94" title="Maintenance">🚧</a></td>
+      <td align="center" valign="top" width="14.28%"><a href="https://github.com/virgiliojr94"><img src="https://avatars.githubusercontent.com/u/virgiliojr94?v=4?s=100" width="100px;" alt="Virgilio Borges"/><br /><sub><b>Virgilio Borges</b></sub></a><br /><a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Code">💻</a> <a href="https://github.com/virgiliojr94/localpdf.io/commits?author=virgiliojr94" title="Documentation">📖</a> <a href="#design-virgiliojr94" title="Design">🎨</a> <a href="#infra-virgiliojr94" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="#maintenance-virgiliojr94" title="Maintenance">🚧</a></td>
     </tr>
   </tbody>
 </table>
@@ -125,7 +125,7 @@ MIT License - Sinta-se livre para usar e modificar!
 
 ## 👨‍💻 Desenvolvedor
 
-**Virgílio Monteiro**
+**Virgilio Borges**
 
 - 📧 Email: virgilio.junior94@gmail.com
 - 📱 WhatsApp: (95) 98112-1572

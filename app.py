@@ -155,7 +155,7 @@ HTML_TEMPLATE = '''
         </div>
 
         <div class="footer">
-            <p>Desenvolvido por Virgílio Monteiro</p>
+            <p>Desenvolvido por Virgilio Borges</p>
             <div>
                 <a href="mailto:virgilio.junior94@gmail.com">✉️ virgilio.junior94@gmail.com</a> |
                 <a href="tel:+5595981121572">📱 (95) 98112-1572</a>
