@@ -88,6 +88,7 @@ Acesse: **http://localhost:5000**
 - **python-docx** - Manipulação de arquivos Word
 - **ReportLab** - Geração de PDFs
 - **OpenPyXL** - Manipulação de planilhas Excel
+- **PDF2Docx** - Conversor de PDF para Docx
 
 ## 🔒 Privacidade
 
