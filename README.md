@@ -49,7 +49,9 @@ LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e do
 
 ## 🚀 Como usar
 
-### Com Docker (Recomendado)
+### 🐳 Opção 1: Com Docker (Recomendado)
+
+O jeito mais fácil e rápido de rodar o projeto:
 
 ```bash
 # Clone o repositório
@@ -61,34 +63,92 @@ docker build -t localpdf .
 docker run -p 5000:5000 localpdf
 ```
 
-Acesse: **http://localhost:5000**
+**Acesse:** http://localhost:5000
 
-### Sem Docker
+### 💻 Opção 2: Localmente (Desenvolvimento)
 
+#### Pré-requisitos
+- Python 3.11+
+- Ghostscript (para conversão PDF/A)
+
+#### Instalação
+
+**1. Clone o repositório**
 ```bash
-# Clone o repositório
 git clone https://github.com/virgiliojr94/localpdf.io.git
 cd localpdf.io
-
-# Instale as dependências
-pip install -r requirements.txt
-# Instale o Ghostscript no sistema (ex.: apt-get install ghostscript)
-
-# Execute a aplicação
-python app.py
 ```
 
-Acesse: **http://localhost:5000**
+**2. Crie um ambiente virtual (recomendado)**
+```bash
+# Com venv
+python -m venv .venv
+
+# Ative o ambiente virtual
+# Windows (Git Bash/PowerShell)
+source .venv/Scripts/activate
+# Linux/macOS
+source .venv/bin/activate
+```
+
+**3. Instale as dependências**
+```bash
+pip install -r requirements.txt
+```
+
+**4. Instale o Ghostscript**
+```bash
+# Ubuntu/Debian
+sudo apt-get install ghostscript
+
+# macOS
+brew install ghostscript
+
+# Windows
+# Baixe em: https://www.ghostscript.com/download/gsdnld.html
+```
+
+**5. Execute a aplicação**
+```bash
+python run.py
+```
+
+**Acesse:** http://localhost:5000
+
+## 📁 Estrutura do Projeto
+
+```
+localpdf.io/
+├── run.py                 # Ponto de entrada da aplicação
+├── requirements.txt       # Dependências Python
+├── dockerfile            # Configuração Docker
+├── static/               # Frontend (HTML, CSS, JS)
+│   └── index.html       # Interface do usuário
+└── src/                  # Código fonte Python
+    ├── app.py           # Flask app e rotas
+    ├── config.py        # Configurações
+    ├── utils.py         # Funções utilitárias
+    └── converters/      # Módulos de conversão
+        ├── pdf_converter.py
+        ├── document_converter.py
+        └── conversion_manager.py
+```
 
 ## 🛠️ Tecnologias
 
-- **Flask** - Framework web Python
-- **PyMuPDF** - Manipulação de PDFs
-- **Pillow** - Processamento de imagens
-- **python-docx** - Manipulação de arquivos Word
-- **ReportLab** - Geração de PDFs
-- **OpenPyXL** - Manipulação de planilhas Excel
-- **PDF2Docx** - Conversor de PDF para Docx
+### Backend
+- **Flask** - Framework web Python minimalista e poderoso
+- **PyMuPDF (fitz)** - Manipulação e renderização de PDFs
+- **Ghostscript** - Conversão para PDF/A e otimização
+- **PDF2Docx** - Conversão de PDF para Word com preservação de layout
+- **Pillow (PIL)** - Processamento e manipulação de imagens
+- **python-docx** - Criação e leitura de arquivos Word (.docx)
+- **OpenPyXL** - Manipulação de planilhas Excel (.xlsx)
+- **ReportLab** - Geração de PDFs programaticamente
+
+### Frontend
+- **HTML5/CSS3/JavaScript** - Interface web moderna e responsiva
+- **Vanilla JS** - Sem dependências de frameworks frontend
 
 ## 🔒 Privacidade
 

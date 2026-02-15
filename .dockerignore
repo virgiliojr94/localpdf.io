@@ -1,0 +1,112 @@
+# ========== Git ==========
+.git/
+.gitignore
+.gitattributes
+
+# ========== Python ==========
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.Python
+
+# Virtual environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+.python-version
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.hypothesis/
+htmlcov/
+.tox/
+.nox/
+
+# ========== IDEs & Editors ==========
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+*.sublime-project
+*.sublime-workspace
+
+# ========== Documentation ==========
+docs/
+*.md
+!README.md
+CHANGELOG.md
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+
+# ========== CI/CD ==========
+.github/
+.gitlab-ci.yml
+.travis.yml
+azure-pipelines.yml
+
+# ========== LocalPDF.io Specific ==========
+# User uploaded files (serão criados no container)
+uploads/
+outputs/
+
+# Backup files
+backup/
+*.bak
+*.backup
+*.old
+app_old.py
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+
+# ========== Development files ==========
+# Scripts de desenvolvimento
+scripts/
+.env.example
+.env.local
+.env.development
+
+# Test files
+tests/
+test_*.py
+*_test.py
+
+# ========== Node.js (se houver) ==========
+node_modules/
+npm-debug.log
+yarn-error.log
+package-lock.json
+yarn.lock
+
+# ========== Outros ==========
+Thumbs.db
+# Arquivos de usuários (serão criados no container ou são temporários)
+*.pdf
+*.docx
+*.xlsx
+*.jpg
+*.jpeg
+*.png
+# Exceto arquivos estáticos do projeto
+!static/**
+# Manter requirements.txt para build
+!requirements.txt
