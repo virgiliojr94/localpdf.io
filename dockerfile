@@ -10,20 +10,22 @@ RUN apt-get update && apt-get install -y \
 # Definir diretório de trabalho
 WORKDIR /app
 
-# Copiar arquivos de requisitos
+# Copiar arquivos de requisitos primeiro (cache layer)
 COPY requirements.txt .
 
 # Instalar dependências Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copiar aplicação
-COPY app.py .
+# Copiar código da aplicação
+COPY src/ ./src/
+COPY static/ ./static/
+COPY run.py .
 
-# Criar diretórios necessários
+# Criar diretórios necessários para uploads e outputs
 RUN mkdir -p uploads outputs
 
 # Expor porta
 EXPOSE 5000
 
 # Comando para executar a aplicação
-CMD ["python", "app.py"]
+CMD ["python", "run.py"]
