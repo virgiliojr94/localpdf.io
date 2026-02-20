@@ -41,6 +41,7 @@ LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e do
 - **📊 PDF → Excel** - Extraia tabelas para planilhas XLSX
 - **📄 PDF → Texto** - Extraia todo o texto em arquivo TXT
 - **🔒 PDF → PDF/A** - Converta para o padrão de arquivamento (PDF/A-1b)
+- **🔍 OCR em PDF** - Extraia texto de PDFs e imagens escaneadas com Tesseract OCR (português e inglês)
 
 ### 🔄 Manipular PDF
 - **🔗 Mesclar PDFs** - Una vários PDFs em um único documento
@@ -72,7 +73,9 @@ cd localpdf.io
 
 # Instale as dependências
 pip install -r requirements.txt
-# Instale o Ghostscript no sistema (ex.: apt-get install ghostscript)
+# Instale o Ghostscript e Tesseract no sistema
+# Debian/Ubuntu:
+apt-get install ghostscript tesseract-ocr tesseract-ocr-por
 
 # Execute a aplicação
 python app.py
@@ -89,6 +92,7 @@ Acesse: **http://localhost:5000**
 - **ReportLab** - Geração de PDFs
 - **OpenPyXL** - Manipulação de planilhas Excel
 - **PDF2Docx** - Conversor de PDF para Docx
+- **Tesseract OCR** - Reconhecimento óptico de caracteres
 
 ## 🔒 Privacidade
 
