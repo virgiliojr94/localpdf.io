@@ -52,7 +52,7 @@ LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e do
 ### Com Docker (Recomendado)
 
 #### 1. Usar imagem pronta (Mais rápido)
-Você pode rodar a aplicação diretamento do GitHub Container Registry sem precisar clonar o código:
+Você pode rodar a aplicação diretamente do GitHub Container Registry sem precisar clonar o código:
 
 ```bash
 docker run -p 5000:5000 ghcr.io/virgiliojr94/localpdf.io:latest
