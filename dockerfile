@@ -5,6 +5,8 @@ RUN apt-get update && apt-get install -y \
     gcc \
     g++ \
     ghostscript \
+    tesseract-ocr \
+    tesseract-ocr-por \
     && rm -rf /var/lib/apt/lists/*
 
 # Definir diretório de trabalho

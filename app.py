@@ -16,6 +16,7 @@ from flask import (
 )
 from pdf2docx import Converter
 from pdf2docx.converter import ConversionException
+import pytesseract
 from PIL import Image
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
@@ -136,6 +137,10 @@ HTML_TEMPLATE = """
                     <h3>🔄 PDF para Word</h3>
                     <p>Converta documentos PDF para Word (.docx) editável</p>
                 </div>
+                <div class="tool-card" onclick="showTool('ocr-pdf')">
+                    <h3>🔍 OCR em PDF</h3>
+                    <p>Extraia texto de PDFs e imagens escaneadas com OCR</p>
+                </div>
             </div>
         </div>
 
@@ -244,6 +249,12 @@ HTML_TEMPLATE = """
                 title: '🔄 PDF para Word',
                 description: 'Converta seus documentos PDF para Word (.docx) editável',
                 accept: '.pdf',
+                multiple: false
+            },
+            'ocr-pdf': {
+                title: '🔍 OCR em PDF',
+                description: 'Extraia texto de PDFs e imagens escaneadas usando reconhecimento óptico de caracteres (Tesseract)',
+                accept: '.pdf,.jpg,.jpeg,.png',
                 multiple: false
             }
         };
@@ -534,6 +545,8 @@ def convert():
             output_files = txt_to_pdf(files[0], temp_dir)
         elif tool == "pdf-to-word":
             output_files = pdf_to_word(files[0], temp_dir)
+        elif tool == "ocr-pdf":
+            output_files = ocr_pdf(files[0], temp_dir)
         else:
             return jsonify({"error": "Ferramenta não suportada"}), 400
 
@@ -810,6 +823,48 @@ def pdf_to_word(file, temp_dir):
             cv.close()
 
     return [docx_path]
+
+
+def ocr_pdf(file, temp_dir):
+    """
+    Extrai texto de um PDF ou imagem usando Tesseract OCR.
+    Retorna um arquivo TXT com o texto extraído.
+    """
+    filename = secure_filename(file.filename)
+    input_path = os.path.join(temp_dir, filename)
+    file.save(input_path)
+
+    ext = filename.rsplit(".", 1)[1].lower()
+    extracted_text = []
+
+    if ext == "pdf":
+        # Converter cada página do PDF em imagem e aplicar OCR
+        doc = fitz.open(input_path)
+        for page_num in range(len(doc)):
+            page = doc.load_page(page_num)
+            pix = page.get_pixmap(matrix=fitz.Matrix(2, 2))  # 2x resolução
+            img_path = os.path.join(temp_dir, f"ocr_page_{page_num + 1}.png")
+            pix.save(img_path)
+
+            img = Image.open(img_path)
+            text = pytesseract.image_to_string(img, lang="por+eng")
+            extracted_text.append(f"--- Página {page_num + 1} ---\n{text}")
+        doc.close()
+    elif ext in ("jpg", "jpeg", "png"):
+        # Aplicar OCR diretamente na imagem
+        img = Image.open(input_path)
+        text = pytesseract.image_to_string(img, lang="por+eng")
+        extracted_text.append(text)
+    else:
+        raise RuntimeError(f"Formato não suportado para OCR: {ext}")
+
+    # Salvar texto extraído em arquivo TXT
+    base_name = os.path.splitext(filename)[0]
+    txt_path = os.path.join(temp_dir, f"{base_name}_ocr.txt")
+    with open(txt_path, "w", encoding="utf-8") as f:
+        f.write("\n\n".join(extracted_text))
+
+    return [txt_path]
 
 
 def build_response(output_files, temp_dir):
