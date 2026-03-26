@@ -7,7 +7,7 @@ body:
     attributes:
       value: |
         Use este template para adicionar alguém como contribuidor ao projeto.
-        
+
         **Ou simplesmente comente:** `@all-contributors please add @username for [tipo]`
 
   - type: input
@@ -59,13 +59,13 @@ body:
     attributes:
       value: |
         ---
-        
+
         ### Como adicionar:
-        
+
         Após criar esta issue, comente:
-        
+
         ```
         @all-contributors please add @username for code, doc
         ```
-        
+
         O bot vai criar um PR automaticamente! 🤖

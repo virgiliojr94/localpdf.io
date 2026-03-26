@@ -19,11 +19,11 @@ const tabContents = document.querySelectorAll('.tab-content');
 tabButtons.forEach(button => {
     button.addEventListener('click', () => {
         const tabName = button.dataset.tab;
-        
+
         // Remove active class from all buttons and contents
         tabButtons.forEach(btn => btn.classList.remove('active'));
         tabContents.forEach(content => content.classList.remove('active'));
-        
+
         // Add active class to clicked button and corresponding content
         button.classList.add('active');
         const activeContent = document.querySelector(`[data-tab-content="${tabName}"]`);
@@ -38,10 +38,10 @@ document.querySelectorAll('.copy-btn').forEach(button => {
     button.addEventListener('click', async () => {
         const codeBlock = button.closest('.code-block');
         const codeText = codeBlock.querySelector('code').textContent;
-        
+
         try {
             await navigator.clipboard.writeText(codeText);
-            
+
             // Visual feedback
             const originalText = button.innerHTML;
             button.innerHTML = `
@@ -50,7 +50,7 @@ document.querySelectorAll('.copy-btn').forEach(button => {
                 </svg>
                 Copiado!
             `;
-            
+
             setTimeout(() => {
                 button.innerHTML = originalText;
             }, 2000);
@@ -66,13 +66,13 @@ const navbar = document.querySelector('.navbar');
 
 window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (currentScroll <= 0) {
         navbar.style.boxShadow = 'none';
     } else {
         navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
     }
-    
+
     lastScroll = currentScroll;
 });
 
@@ -128,7 +128,7 @@ function createMobileMenu() {
             <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
         </svg>
     `;
-    
+
     // Add to navbar if on mobile
     if (window.innerWidth < 768) {
         const navContent = document.querySelector('.nav-content');
@@ -158,7 +158,7 @@ const konamiSequence = [
 document.addEventListener('keydown', (e) => {
     konamiCode.push(e.key);
     konamiCode = konamiCode.slice(-konamiSequence.length);
-    
+
     if (konamiCode.join(',') === konamiSequence.join(',')) {
         document.body.style.animation = 'rainbow 2s linear infinite';
         setTimeout(() => {

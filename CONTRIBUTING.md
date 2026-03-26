@@ -5,37 +5,73 @@ Obrigado por considerar contribuir! 🎉
 ## Como Contribuir
 
 ### 1. Fork o Projeto
+
 - Faça um fork do repositório
 - Clone o fork para sua máquina
 
+#### Configure o Ambiente
+
+Para garantir a qualidade do código, utilizamos ferramentas como `ruff` e `pre-commit`.
+
+1. **Crie um ambiente virtual (Recomendado)**
+
+    ```bash
+    python -m venv venv
+    # Windows
+    venv\Scripts\activate
+    # Linux/Mac
+    source venv/bin/activate
+    ```
+
+2. **Instale as dependências**
+
+    ```bash
+    pip install -r requirements.txt
+    pip install -r requirements_dev.txt
+    ```
+
+3. **Instale os hooks do pre-commit**
+
+    Isso garantirá que verificações automáticas rodem antes de cada commit.
+
+    ```bash
+    pre-commit install
+    ```
+
 ### 2. Crie uma Branch
+
 ```bash
 git checkout -b feature/minha-contribuicao
 ```
 
 ### 3. Faça suas Alterações
+
 - Escreva código limpo e comentado
 - Teste suas mudanças localmente
 - Certifique-se de que tudo funciona
 
 ### 4. Commit suas Mudanças
+
 ```bash
 git add .
 git commit -m "Adiciona: descrição da sua contribuição"
 ```
 
 Use mensagens de commit descritivas:
+
 - `Adiciona: nova funcionalidade X`
 - `Corrige: bug na conversão Y`
 - `Melhora: performance da função Z`
 - `Documenta: atualiza README`
 
 ### 5. Push para o GitHub
+
 ```bash
 git push origin feature/minha-contribuicao
 ```
 
 ### 6. Abra um Pull Request
+
 - Vá até o repositório original
 - Clique em "New Pull Request"
 - Descreva suas mudanças claramente
@@ -43,14 +79,18 @@ git push origin feature/minha-contribuicao
 ## O que Contribuir?
 
 ### 🐛 Bugs
+
 Encontrou um bug? Abra uma issue descrevendo:
+
 - O que você esperava que acontecesse
 - O que aconteceu
 - Passos para reproduzir
 - Prints/logs se possível
 
 ### ✨ Novas Funcionalidades
+
 Ideias de novas funcionalidades:
+
 - Novos formatos de conversão
 - Melhorias na interface
 - Otimizações de performance
@@ -58,12 +98,14 @@ Ideias de novas funcionalidades:
 - Internacionalização (i18n)
 
 ### 📚 Documentação
+
 - Melhorar o README
 - Adicionar exemplos de uso
 - Corrigir typos
 - Traduzir documentação
 
 ### 🎨 Design
+
 - Melhorar a interface
 - Adicionar tema escuro
 - Tornar responsivo
@@ -80,7 +122,7 @@ Ideias de novas funcionalidades:
 
 Usamos o [All Contributors Bot](https://allcontributors.org/) para reconhecer todas as contribuições!
 
-### Como ser adicionado como contribuidor:
+### Como ser adicionado como contribuidor
 
 Após sua contribuição ser aceita, você ou um mantenedor pode comentar:
 
@@ -89,6 +131,7 @@ Após sua contribuição ser aceita, você ou um mantenedor pode comentar:
 ```
 
 **Tipos de contribuição reconhecidos:**
+
 - `code` - Código
 - `doc` - Documentação
 - `design` - Design
@@ -102,7 +145,8 @@ O bot criará automaticamente um PR adicionando você à lista de contribuidores
 ## Dúvidas?
 
 Entre em contato:
-- Email: virgilio.junior94@gmail.com
+
+- Email: <virgilio.junior94@gmail.com>
 - Abra uma issue no GitHub
 
 ---
