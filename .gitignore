@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+build/
+*.egg
+
+# Virtual environments
+venv/
+.venv/
+env/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# App runtime directories
+uploads/
+outputs/
+
+# Ruff
+.ruff_cache/
+
+# Playwright
+.playwright-mcp/
+
+# Environment
+.env
+.env.*
+!.env.example

@@ -865,3 +865,26 @@ code {
         flex-direction: column;
     }
 }
+
+/* Language Selector */
+.lang-select {
+    padding: 8px 12px;
+    border-radius: 20px;
+    border: 1px solid #e5e7eb;
+    background: #ffffff;
+    color: #1a1a2e;
+    font-size: 14px;
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.lang-select:hover {
+    border-color: #00c8ff;
+}
+
+.lang-select:focus {
+    border-color: #00c8ff;
+    box-shadow: 0 0 0 3px rgba(0, 200, 255, 0.15);
+}

@@ -1,0 +1,15 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: dockerfile.run
+    ports:
+      - "5050:5000"
+    volumes:
+      - .:/app
+      - /app/__pycache__
+    environment:
+      - FLASK_APP=app.py
+      - FLASK_ENV=development
+      - FLASK_DEBUG=1
+    restart: unless-stopped

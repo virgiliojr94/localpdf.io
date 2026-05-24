@@ -1,0 +1,54 @@
+# ──────────────────────────────────────────────────
+# Development Dockerfile for LocalPDF.io
+# ──────────────────────────────────────────────────
+#
+# Build:
+#   docker build -f dockerfile.run -t localpdf-dev .
+#
+# Run (with live-reload via volume mount):
+#   docker run -p 5000:5000 -v $(pwd):/app localpdf-dev
+#
+# Or use docker-compose for a smoother experience (see docker-compose.yml)
+#
+# This image uses the same base and requirements as the production
+# dockerfile but keeps build tools and runs as root for development.
+# ──────────────────────────────────────────────────
+
+FROM python:3.11-slim
+
+# Runtime system dependencies (same as production)
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    gcc \
+    g++ \
+    ghostscript \
+    tesseract-ocr \
+    tesseract-ocr-por \
+    tesseract-ocr-eng \
+    && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /app
+
+# Upgrade pip, wheel, setuptools (CVE fixes aligned with production)
+RUN pip install --no-cache-dir --upgrade \
+        pip==25.3 \
+        wheel==0.46.2 \
+        setuptools==82.0.1
+
+# Install Python dependencies
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy application source (overridden by volume mount in dev)
+COPY . .
+
+# Create upload/output directories
+RUN mkdir -p uploads outputs
+
+EXPOSE 5000
+
+# Run with Flask auto-reloader enabled for development
+ENV FLASK_APP=app.py
+ENV FLASK_ENV=development
+ENV FLASK_DEBUG=1
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=5000", "--reload"]

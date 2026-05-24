@@ -1,0 +1,238 @@
+# Italian translations for LocalPDF.io.
+# Copyright (C) 2026
+# This file is distributed under the same license as the PROJECT project.
+msgid ""
+msgstr ""
+"Project-Id-Version: LocalPDF.io 1.0\n"
+"Report-Msgid-Bugs-To: virgilio.junior94@gmail.com\n"
+"POT-Creation-Date: 2026-05-23 12:25+0200\n"
+"PO-Revision-Date: 2026-05-23 12:25+0200\n"
+"Last-Translator: Virgilio Borges <virgilio.junior94@gmail.com>\n"
+"Language: it\n"
+"Language-Team: Italian <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.15.0\n"
+
+#: app.py:173
+msgid "No file uploaded"
+msgstr "Nessun file caricato"
+
+#: app.py:179
+msgid "No file selected"
+msgstr "Nessun file selezionato"
+
+#: app.py:184
+#, python-format
+msgid "Extension not allowed: %(filename)s"
+msgstr "Estensione non consentita: %(filename)s"
+
+#: app.py:213
+msgid "Tool not supported"
+msgstr "Strumento non supportato"
+
+#: app.py:343
+#, python-format
+msgid "Error converting %(filename)s to PDF/A: %(error)s"
+msgstr "Errore nella conversione di %(filename)s in PDF/A: %(error)s"
+
+#: app.py:478
+#, python-format
+msgid "Error in PDF file: %(error)s"
+msgstr "Errore nel file PDF: %(error)s"
+
+#: app.py:480
+#, python-format
+msgid "Internal conversion error: %(error)s"
+msgstr "Errore interno di conversione: %(error)s"
+
+#: app.py:482
+#, python-format
+msgid "Error converting %(filename)s to Word: %(error)s"
+msgstr "Errore nella conversione di %(filename)s in Word: %(error)s"
+
+#: app.py:519
+#, python-format
+msgid "Format not supported for OCR: %(ext)s"
+msgstr "Formato non supportato per OCR: %(ext)s"
+
+#: templates/index.html:62
+msgid "All the PDF tools you need in one place"
+msgstr "Tutti gli strumenti PDF di cui hai bisogno in un unico posto"
+
+#: templates/index.html:68 templates/index.html:168
+msgid "PDF to Images"
+msgstr "PDF in Immagini"
+
+#: templates/index.html:69
+msgid "Convert PDF pages to JPG or PNG images"
+msgstr "Converti le pagine PDF in immagini JPG o PNG"
+
+#: templates/index.html:72 templates/index.html:174
+msgid "Images to PDF"
+msgstr "Immagini in PDF"
+
+#: templates/index.html:73
+msgid "Combine multiple images into a single PDF"
+msgstr "Combina più immagini in un unico PDF"
+
+#: templates/index.html:76 templates/index.html:180
+msgid "Merge PDFs"
+msgstr "Unisci PDF"
+
+#: templates/index.html:77
+msgid "Combine multiple PDFs into a single document"
+msgstr "Combina più PDF in un unico documento"
+
+#: templates/index.html:80 templates/index.html:186
+msgid "Split PDF"
+msgstr "Dividi PDF"
+
+#: templates/index.html:81 templates/index.html:187
+msgid "Extract specific pages from your PDF"
+msgstr "Estrai pagine specifiche dal tuo PDF"
+
+#: templates/index.html:84 templates/index.html:192
+msgid "Compress PDF"
+msgstr "Comprimi PDF"
+
+#: templates/index.html:85
+msgid "Reduce the size of your PDF file"
+msgstr "Riduci la dimensione del tuo file PDF"
+
+#: templates/index.html:88 templates/index.html:198
+msgid "PDF to PDF/A"
+msgstr "PDF in PDF/A"
+
+#: templates/index.html:89
+msgid "Standardize your PDF for archiving (PDF/A)"
+msgstr "Standardizza il tuo PDF per l'archiviazione (PDF/A)"
+
+#: templates/index.html:92 templates/index.html:204
+msgid "Word to PDF"
+msgstr "Word in PDF"
+
+#: templates/index.html:93
+msgid "Convert one or more DOCX documents to PDF"
+msgstr "Converti uno o più documenti DOCX in PDF"
+
+#: templates/index.html:96 templates/index.html:210
+msgid "Excel to PDF"
+msgstr "Excel in PDF"
+
+#: templates/index.html:97
+msgid "Convert XLSX spreadsheets to PDF"
+msgstr "Converti fogli di calcolo XLSX in PDF"
+
+#: templates/index.html:100 templates/index.html:216
+msgid "TXT to PDF"
+msgstr "TXT in PDF"
+
+#: templates/index.html:101
+msgid "Convert plain text files to PDF"
+msgstr "Converti file di testo semplice in PDF"
+
+#: templates/index.html:104 templates/index.html:222
+msgid "PDF to Word"
+msgstr "PDF in Word"
+
+#: templates/index.html:105
+msgid "Convert PDF documents to editable Word (.docx)"
+msgstr "Converti documenti PDF in Word (.docx) modificabile"
+
+#: templates/index.html:108 templates/index.html:228
+msgid "OCR PDF"
+msgstr "OCR su PDF"
+
+#: templates/index.html:109
+msgid "Extract text from PDFs and scanned images with OCR"
+msgstr "Estrai testo da PDF e immagini scansionate con OCR"
+
+#: templates/index.html:116
+msgid "Back"
+msgstr "Indietro"
+
+#: templates/index.html:123
+msgid "Click here or drag files to upload"
+msgstr "Clicca qui o trascina i file per caricarli"
+
+#: templates/index.html:124
+msgid "Choose Files"
+msgstr "Scegli File"
+
+#: templates/index.html:133
+msgid "Convert"
+msgstr "Converti"
+
+#: templates/index.html:144
+msgid "Developed by"
+msgstr "Sviluppato da"
+
+#: templates/index.html:169
+msgid "Convert each page of your PDF into separate images"
+msgstr "Converti ogni pagina del tuo PDF in immagini separate"
+
+#: templates/index.html:175
+msgid "Combine multiple images into a single PDF file"
+msgstr "Combina più immagini in un unico file PDF"
+
+#: templates/index.html:181
+msgid "Combine multiple PDF files into a single document"
+msgstr "Combina più file PDF in un unico documento"
+
+#: templates/index.html:193
+msgid "Reduce PDF file size while maintaining quality"
+msgstr "Riduci la dimensione del file PDF mantenendo la qualità"
+
+#: templates/index.html:199
+msgid "Convert PDFs to PDF/A-1b archival standard"
+msgstr "Converti PDF nello standard di archiviazione PDF/A-1b"
+
+#: templates/index.html:205
+msgid "Convert Word (.docx) documents to PDF - accepts multiple files"
+msgstr "Converti documenti Word (.docx) in PDF - accetta file multipli"
+
+#: templates/index.html:211
+msgid "Convert Excel (.xlsx) spreadsheets to PDF"
+msgstr "Converti fogli di calcolo Excel (.xlsx) in PDF"
+
+#: templates/index.html:217
+msgid "Convert plain text (.txt) files to PDF"
+msgstr "Converti file di testo semplice (.txt) in PDF"
+
+#: templates/index.html:223
+msgid "Convert your PDF documents to editable Word (.docx)"
+msgstr "Converti i tuoi documenti PDF in Word (.docx) modificabile"
+
+#: templates/index.html:229
+msgid ""
+"Extract text from PDFs and scanned images using Optical Character "
+"Recognition (Tesseract)"
+msgstr ""
+"Estrai testo da PDF e immagini scansionate utilizzando il Riconoscimento "
+"Ottico dei Caratteri (Tesseract)"
+
+#: templates/index.html:270
+msgid "Remove"
+msgstr "Rimuovi"
+
+#: templates/index.html:352
+msgid "Success!"
+msgstr "Successo!"
+
+#: templates/index.html:352
+msgid "File converted and downloaded successfully!"
+msgstr "File convertito e scaricato con successo!"
+
+#: templates/index.html:355
+msgid "Conversion error"
+msgstr "Errore di conversione"
+
+#: templates/index.html:358
+msgid "Error!"
+msgstr "Errore!"
+
+#: templates/index.html:358
+msgid "An error occurred during conversion. Please try again."
+msgstr "Si è verificato un errore durante la conversione. Riprova."
