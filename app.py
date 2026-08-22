@@ -21,6 +21,7 @@ from PIL import Image
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
 from werkzeug.utils import secure_filename
+from xhtml2pdf import pisa
 
 app = Flask(__name__)
 app.config["MAX_CONTENT_LENGTH"] = 100 * 1024 * 1024  # 100MB max
@@ -31,7 +32,7 @@ app.config["OUTPUT_FOLDER"] = "outputs"
 os.makedirs(app.config["UPLOAD_FOLDER"], exist_ok=True)
 os.makedirs(app.config["OUTPUT_FOLDER"], exist_ok=True)
 
-ALLOWED_EXTENSIONS = {"pdf", "docx", "txt", "xlsx", "jpg", "jpeg", "png"}
+ALLOWED_EXTENSIONS = {"pdf", "docx", "txt", "xlsx", "jpg", "jpeg", "png", "html"}
 
 
 def allowed_file(filename):
@@ -141,6 +142,10 @@ HTML_TEMPLATE = """
                     <h3>🔍 OCR em PDF</h3>
                     <p>Extraia texto de PDFs e imagens escaneadas com OCR</p>
                 </div>
+                <div class="tool-card" onclick="showTool('html-to-pdf')">
+                    <h3>🌐 HTML para PDF</h3>
+                    <p>Converta arquivos HTML para PDF formatado</p>
+                </div>
             </div>
         </div>
 
@@ -152,7 +157,7 @@ HTML_TEMPLATE = """
                 <p id="tool-description"></p>
 
                 <div class="upload-area" id="upload-area" onclick="document.getElementById('file-input').click()">
-                    <input type="file" id="file-input" class="file-input" multiple accept=".pdf,.docx,.jpg,.jpeg,.png,.txt,.xlsx">
+                    <input type="file" id="file-input" class="file-input" multiple accept=".pdf,.docx,.jpg,.jpeg,.png,.txt,.xlsx,.html">
                     <p>📁 Clique aqui ou arraste arquivos para fazer upload</p>
                     <button class="upload-btn">Escolher Arquivos</button>
                 </div>
@@ -255,6 +260,12 @@ HTML_TEMPLATE = """
                 title: '🔍 OCR em PDF',
                 description: 'Extraia texto de PDFs e imagens escaneadas usando reconhecimento óptico de caracteres (Tesseract)',
                 accept: '.pdf,.jpg,.jpeg,.png',
+                multiple: false
+            },
+            'html-to-pdf': {
+                title: '🌐 HTML para PDF',
+                description: 'Converta arquivos HTML para PDF formatado',
+                accept: '.html',
                 multiple: false
             }
         };
@@ -547,6 +558,8 @@ def convert():
             output_files = pdf_to_word(files[0], temp_dir)
         elif tool == "ocr-pdf":
             output_files = ocr_pdf(files[0], temp_dir)
+        elif tool == "html-to-pdf":
+            output_files = html_to_pdf(files[0], temp_dir)
         else:
             return jsonify({"error": "Ferramenta não suportada"}), 400
 
@@ -863,6 +876,27 @@ def ocr_pdf(file, temp_dir):
         f.write("\n\n".join(extracted_text))
 
     return [txt_path]
+
+
+def html_to_pdf(file, temp_dir):
+    """
+    Convert HTML file to PDF format.
+    """
+    html_path = os.path.join(temp_dir, secure_filename(file.filename))
+    file.save(html_path)
+
+    pdf_path = os.path.join(temp_dir, "html_to_pdf.pdf")
+    
+    with open(html_path, "r", encoding="utf-8") as html_file:
+        source_html = html_file.read()
+        
+    with open(pdf_path, "w+b") as result_file:
+        pisa_status = pisa.CreatePDF(source_html, dest=result_file)
+        
+    if pisa_status.err:
+        raise RuntimeError(f"Erro ao converter {file.filename} para PDF.")
+        
+    return [pdf_path]
 
 
 def build_response(output_files, temp_dir):
