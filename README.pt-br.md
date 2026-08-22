@@ -40,6 +40,7 @@ LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e do
 - **📝 Word → PDF** - Converta um ou vários documentos DOCX em PDF único
 - **📊 Excel → PDF** - Transforme planilhas XLSX em PDF
 - **📄 Texto → PDF** - Converta arquivos TXT em PDF formatado
+- **🌐 HTML → PDF** - Converta arquivos HTML (com suporte a estilos e imagens) para PDF
 
 ### 📤 Converter de PDF
 - **🖼️ PDF → Imagens** - Extraia cada página como imagem PNG
@@ -52,6 +53,12 @@ LocalPDF.io é uma aplicação web local para manipulação de arquivos PDF e do
 - **🔗 Mesclar PDFs** - Una vários PDFs em um único documento
 - **✂️ Dividir PDF** - Separe cada página em arquivo individual
 - **📦 Comprimir PDF** - Reduza o tamanho mantendo a qualidade
+
+### 🎨 Interface e Experiência (UX/UI)
+- **Design Moderno e Responsivo** - Interface limpa e adaptável para desktop e mobile
+- **Menu Centralizado** - Navegação rápida entre as ferramentas através de um dropdown organizado alfabeticamente
+- **Internacionalização (i18n)** - Suporte nativo a Português e Inglês com troca em tempo real
+- **Feedback Interativo** - Notificações em Toast, botões animados e acessibilidade (a11y) melhorada
 
 ## 🚀 Como usar
 
@@ -105,6 +112,7 @@ Acesse: **http://localhost:5000**
 - **ReportLab** - Geração de PDFs
 - **OpenPyXL** - Manipulação de planilhas Excel
 - **PDF2Docx** - Conversor de PDF para Docx
+- **Xhtml2pdf** - Conversor de HTML para PDF
 
 ## 🔒 Privacidade
 

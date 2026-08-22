@@ -92,10 +92,9 @@ Found a bug? Open an issue describing:
 Ideas for new features:
 
 - New conversion formats
-- UI improvements
 - Performance optimizations
 - Automated tests
-- Internationalization (i18n)
+- Add more languages (i18n)
 
 ### 📚 Documentation
 
@@ -106,10 +105,8 @@ Ideas for new features:
 
 ### 🎨 Design
 
-- Improve the interface
 - Add dark mode
-- Make it responsive
-- Improve UX
+- Add micro-animations
 
 ## Code guidelines
 

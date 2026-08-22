@@ -37,13 +37,12 @@ No accounts. No cloud. No data leaving your computer.
 
 ## ✨ Features
 
-### 📤 Converter de PDF
-- **🖼️ PDF → Imagens** - Extraia cada página como imagem PNG
-- **📝 PDF → Word** - Converta PDF em documento DOCX editável
-- **📊 PDF → Excel** - Extraia tabelas para planilhas XLSX
-- **📄 PDF → Texto** - Extraia todo o texto em arquivo TXT
-- **🔒 PDF → PDF/A** - Converta para o padrão de arquivamento (PDF/A-1b)
-- **🔍 OCR em PDF** - Extraia texto de PDFs e imagens escaneadas com Tesseract OCR (português e inglês)
+### 📥 Convert to PDF
+- **🖼️ Images → PDF** — Combine multiple images (JPG, PNG) into one PDF
+- **📝 Word → PDF** — Convert one or multiple DOCX documents into a single PDF
+- **📊 Excel → PDF** — Transform XLSX spreadsheets into PDF
+- **📄 Text → PDF** — Convert TXT files to formatted PDF
+- **🌐 HTML → PDF** — Convert HTML files (with CSS and images support) to PDF
 
 ### 📤 Convert from PDF
 - **🖼️ PDF → Images** — Extract each page as a PNG image
@@ -51,11 +50,18 @@ No accounts. No cloud. No data leaving your computer.
 - **📊 PDF → Excel** — Extract tables into an XLSX spreadsheet
 - **📄 PDF → Text** — Extract all text into a TXT file
 - **🔒 PDF → PDF/A** — Convert to archival standard (PDF/A-1b)
+- **🔍 OCR on PDF** — Extract text from PDFs and scanned images using Tesseract OCR
 
 ### 🔄 Manipulate PDF
 - **🔗 Merge PDFs** — Combine multiple PDFs into one document
 - **✂️ Split PDF** — Separate each page into individual files
 - **📦 Compress PDF** — Reduce file size while preserving quality
+
+### 🎨 Interface and Experience (UX/UI)
+- **Modern & Responsive Design** — Clean interface adaptable to desktop and mobile devices
+- **Centralized Menu** — Fast navigation between tools via an alphabetically sorted dropdown
+- **Internationalization (i18n)** — Native support for English and Portuguese with real-time switching
+- **Interactive Feedback** — Toast notifications, animated buttons, and improved accessibility (a11y)
 
 ## 🚀 Usage
 
@@ -104,6 +110,7 @@ Open: **http://localhost:5000**
 - **OpenPyXL** - Manipulação de planilhas Excel
 - **PDF2Docx** - Conversor de PDF para Docx
 - **Tesseract OCR** - Reconhecimento óptico de caracteres
+- **Xhtml2pdf** - HTML to PDF converter
 
 ## 🔒 Privacy
 
