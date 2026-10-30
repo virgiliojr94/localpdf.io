@@ -3,7 +3,7 @@ ghostscript==0.7
 openpyxl==3.1.2
 pdf2docx==0.5.8
 pdfplumber==0.11.9
-Pillow==12.1.1
+Pillow==13.0.0
 PyMuPDF==1.23.8
 python-docx==0.8.11
 python-pptx==0.6.21
